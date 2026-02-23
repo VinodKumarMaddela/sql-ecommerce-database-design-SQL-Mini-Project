@@ -1,0 +1,17 @@
+CREATE TABLE Users (
+    user_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    user_id INT,
+    amount DECIMAL(10,2),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+SELECT Users.name, Orders.amount
+FROM Users
+JOIN Orders
+ON Users.user_id = Orders.user_id;
